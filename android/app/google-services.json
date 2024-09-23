@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "152356373399",
+    "project_id": "to-do-bmx49u",
+    "storage_bucket": "to-do-bmx49u.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152356373399:android:9f91e3bd550bb3d07a7ad2",
+        "android_client_info": {
+          "package_name": "com.mycompany.todo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO3i3Nxm-cXonRL1pmw0d_6B2GLrb9nnQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
