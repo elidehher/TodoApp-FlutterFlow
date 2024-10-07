@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -783,8 +784,47 @@ class _LoginWidgetState extends State<LoginWidget>
                                     createdTime: getCurrentTimestamp,
                                   ));
 
-                              context.goNamedAuth(
-                                  'onboarding', context.mounted);
+                              _model.apiResultpfn =
+                                  await SendEmailToUserCall.call(
+                                to: _model.signupEmailTextController.text,
+                              );
+
+                              if ((_model.apiResultpfn?.succeeded ?? true)) {
+                                context.goNamedAuth(
+                                    'onboarding', context.mounted);
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Check your email for a message.',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: const Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Failed to send email.',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: const Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                );
+                              }
+
+                              safeSetState(() {});
                             },
                             text: 'Signup',
                             options: FFButtonOptions(
